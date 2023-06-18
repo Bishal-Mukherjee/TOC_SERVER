@@ -16,13 +16,14 @@ router.post("/joinus", async (req, res) => {
     const sheet = doc.sheetsByIndex[0];
     await sheet.getRows();
 
-    const { name, email, contactnumber, role } = req.body;
+    const { name, email, contactnumber, role, receiveUpdates } = req.body;
 
     await sheet.addRow({
       NAME: name,
       EMAIL: email,
       "CONTACT NUMBER": contactnumber,
       ROLE: role,
+      "RECEIVE UPDATES": receiveUpdates,
     });
 
     return res.status(200).json({
